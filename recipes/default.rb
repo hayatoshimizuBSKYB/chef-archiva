@@ -21,11 +21,17 @@ ark "archiva" do
   action :install
 end
 
+user "archiva" do
+  comment "Archiva User"
+  home "/home/archiva"
+  shell "/bin/bash"
+end
+
 
 #create scripts(/etc/init.d/archiva <option>) for stop start, using symblinks
 
 link "/etc/init.d/archiva" do
-  to "/opt/archiva/bin/archiva"
+  to "#{ node[:archiva][:home]}/bin/archiva"
 end
 
 service "archiva" do
