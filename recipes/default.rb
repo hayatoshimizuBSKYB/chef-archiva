@@ -21,6 +21,15 @@ ark "archiva" do
   action :install
 end
 
+file "#{ node[:archiva][:home]}/bin/wrapper-linux-x86-32" do
+  action :delete
+end
+
+file "#{ node[:archiva][:home]}/lib/libwrapper-linux-x86-32.so" do
+  action :delete
+end
+
+
 user "archiva" do
   comment "Archiva User"
   home "/home/archiva"
