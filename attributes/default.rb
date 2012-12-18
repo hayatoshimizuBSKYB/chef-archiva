@@ -10,7 +10,7 @@ default[:archiva][:install_path] = "/opt/"
 default[:archiva][:home] = "/opt/archiva"
 default[:archiva][:checksum] = "b6095725a45305c63620f1abac4d80271d2d37bed79f2ab0d0cb8a62449e92cb"
 default[:archiva][:user_owner] = "root"
-
+default[:archiva][:hostname] = ""
 
 #Web settings (archiva)
 default[:archiva][:web_host]               = "127.0.0.1"
