@@ -8,6 +8,9 @@ include_recipe "ark"
 
 bash "Setup hostname" do
   code <<-EOH
+    orig_hostname=`cat /etc/hostname`
+    echo >> /etc/chef/client.rb
+    echo node_name = \"$orig_hostname\" >> /etc/chef/client.rb
     echo Setting hostname: #{node[:archiva][:hostname]}
     echo #{node[:archiva][:hostname]} > /etc/hostname
     hostname #{node[:archiva][:hostname]}
