@@ -6,17 +6,6 @@
 
 include_recipe "ark"
 
-bash "Setup hostname" do
-  code <<-EOH
-    echo >> /etc/chef/client.rb
-    echo Setting hostname: #{node[:archiva][:hostname]}
-    echo #{node[:archiva][:hostname]} > /etc/hostname
-    hostname #{node[:archiva][:hostname]}
-  EOH
-  only_if  { node[:archiva][:hostname].length > 0 rescue false }
-end
-
-
 #download, extract archiva in /opt and make the proper symblink
 
 ark "archiva" do
